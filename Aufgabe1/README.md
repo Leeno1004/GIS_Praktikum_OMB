@@ -1,8 +1,8 @@
 # Aufgaben
 
 ### **1. HTML-Grundlagen**
- * Code:
- * GitHub Pages: 
+ * Code: https://github.com/Leeno1004/GIS_Praktikum_OMB/tree/main/Aufgabe1
+ * GitHub Pages: https://leeno1004.github.io/GIS_Praktikum_OMB/
  
 </br> 
 
