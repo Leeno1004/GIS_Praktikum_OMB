@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #BDB38C;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    border: 10px beige;
+}
+
+.Page-Teaser {
+    width: 100%;
+    height: 500px;
+    background-image: url(Medien/BarcelonaCover.jpg);
+    background-position: center;
+    background-size: cover;
+    border-bottom: 20px;
+    border-color: black;
+}
+
+.Page-Teaser2 {
+    width: 100%;
+    height: 500px;
+    background-image: url(Medien/barcelona-spain.jpg);
+    background-position: center;
+    background-size: cover;
+    border-bottom: 20px;
+    border-color: black;
+}
+
+.Page-Teaser3 {
+    width: 100%;
+    height: 500px;
+    background-image: url(Medien/pool-barca.jpg);
+    background-position: center;
+    background-size: cover;
+    border-bottom: 20px;
+    border-color: black;
+}
+
+p {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic
+}
+
+a:hover {
+    color: #DCDBAD;
+    text-decoration: none;
+}
+
+a:active {
+    background-color: rgb(196, 127, 106);
+}
+
+h1,
+h2,
+h3 {
+    border-bottom: 3px solid lightgray;
+}
+
+.Text2:first-child {
+    border-bottom: 3px;
+}
+
+.Text1 {
+    width: 70%;
+    border: 10px beige;
+    padding: 30px;
+    margin: 40px;
+}
+
+.Text1 p {
+    font-size: 20px;
+}
+
+.Text2 {
+    width: 70%;
+    border: 10px beige;
+    padding: 30px;
+    margin: 40px;
+}
+
+.Text2 p {
+    font-size: 20px;
+}
+
+.Leiste {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.Leiste li {
+    float: left;
+}
+
+.Leiste li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+#Liste1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2em
+}
+
+main {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.Leiste {
+    position: fixed;
+    top: 0;
+    left: 0
+}
+
+#Liste1 ul {
+    list-style: none;
+    padding: 0;
+}
+
+#Liste1 li {
+    display: inline-block;
+    color: black;
+    background-color: white;
+    padding: 5px 10px;
+    margin: 0 10px 10px 0;
+    border-radius: 5px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+}
+
+input:focus {
+    outline: none;
+}
+
+[href] {
+    background: #1697A3;
+    color: white;
+}
+
+.footer p:first-child {
+    background-color: #1697a325;
+    padding: 2;
+}
+
+p::first-letter {
+    font-size: 1.2em;
+}
+
+h3 {
+    width: 100px;
+    height: calc(3 * 10px);
+    border: 1px solid rgba(200, 50, 50, 0.692);
+    background-image: radial-gradient( circle closest-side at center, white, yellow, orange);
+    transform: translate(20px, 10px);
+}
