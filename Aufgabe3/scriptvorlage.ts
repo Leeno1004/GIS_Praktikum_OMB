@@ -1,5 +1,5 @@
 // -- [Aufgabe 1]
-
+namespace Scriptvorlage{
 window.addEventListener("load", init);
 
 
@@ -160,4 +160,5 @@ function init(_event: Event): void {
 
   concertEvents.forEach(concertEvent => concertEvent.show());
 
+}
 }

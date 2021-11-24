@@ -1,3 +1,4 @@
+[21:00, 23.11.2021] Calvin:
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,16 +7,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="Eventtabelle.ts" defer></script>
+    <script src="Eventtabelle.js"></script>
 </head>
 
 <body>
-    <input id="input-interpret" type="text" name="interpret" placeholder="Interpret" />
-    <input id="input-price" type="number" name="price" placeholder="Price" />
-    <button id="etwasMachen">Input Eintragen</button>
-    <div id="display"></div>
+    <input id="input-interpret" type="text" name="interpret" placeholder="Interpret">
+    <input id="input-price" type="number" name="price" placeholder="Price">
+    <input id="input-date" type="date" name="date">
+    <input id="input-time" type="time" name="time">
 
+    <button id="input-enter">Input Eintragen</button>
 
+    <table id="display">
+        <tr>
+            <th>Interpret</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+    </table>
 
 </body>
 
