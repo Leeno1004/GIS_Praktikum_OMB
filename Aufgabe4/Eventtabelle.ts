@@ -26,6 +26,10 @@ namespace testNamespace {
         minutes: number
     }
 
+    interface EventDataRow {
+        event: EventData,
+        row: HTMLTableRowElement
+    }
 
     function init(_event: Event): void {
 
@@ -103,19 +107,28 @@ namespace testNamespace {
         let timeCell: HTMLTableCellElement = document.createElement("td");
         let deleteButton: HTMLButtonElement = document.createElement("button");
 
+        let eventDataRow: EventDataRow = { event: _data, row: _row }
+        deleteButton.addEventListener("click", onDeleteButton.bind(eventDataRow));
 
         interpretCell.innerHTML = _data.interpret;
         priceCell.innerHTML = _data.price.toString();
         dateCell.innerHTML = _data.date.toDateString();
         timeCell.innerHTML = _data.time.hours + ":" + _data.time.minutes;
-
+        deleteButton.innerHTML = "delete";
 
         _row.appendChild(interpretCell);
         _row.appendChild(priceCell);
         _row.appendChild(dateCell);
         _row.appendChild(timeCell);
+        _row.appendChild(deleteButton);
     }
 
-    function onDeleteButton(): void
+    function onDeleteButton(this: EventDataRow, _event: MouseEvent): void {
 
+        displayTable.deleteRow(this.row.rowIndex);
+
+        events = events.filter(event => event !== this.event);
+
+        updateLocalStorage();
+    }
 }

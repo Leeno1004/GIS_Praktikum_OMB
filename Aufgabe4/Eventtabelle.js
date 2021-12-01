@@ -58,14 +58,23 @@ var testNamespace;
         let dateCell = document.createElement("td");
         let timeCell = document.createElement("td");
         let deleteButton = document.createElement("button");
+        let eventDataRow = { event: _data, row: _row };
+        deleteButton.addEventListener("click", onDeleteButton.bind(eventDataRow));
         interpretCell.innerHTML = _data.interpret;
         priceCell.innerHTML = _data.price.toString();
         dateCell.innerHTML = _data.date.toDateString();
         timeCell.innerHTML = _data.time.hours + ":" + _data.time.minutes;
+        deleteButton.innerHTML = "delete";
         _row.appendChild(interpretCell);
         _row.appendChild(priceCell);
         _row.appendChild(dateCell);
         _row.appendChild(timeCell);
+        _row.appendChild(deleteButton);
+    }
+    function onDeleteButton(_event) {
+        displayTable.deleteRow(this.row.rowIndex);
+        events = events.filter(event => event !== this.event);
+        updateLocalStorage();
     }
 })(testNamespace || (testNamespace = {}));
 //# sourceMappingURL=Eventtabelle.js.map
