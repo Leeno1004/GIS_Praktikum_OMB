@@ -101,11 +101,13 @@ namespace testNamespace {
         let priceCell: HTMLTableCellElement = document.createElement("td");
         let dateCell: HTMLTableCellElement = document.createElement("td");
         let timeCell: HTMLTableCellElement = document.createElement("td");
+        let deleteButton: HTMLButtonElement = document.createElement("button");
+
 
         interpretCell.innerHTML = _data.interpret;
         priceCell.innerHTML = _data.price.toString();
         dateCell.innerHTML = _data.date.toDateString();
-        timeCell.innerHTML = _data.time.hours.toString() + ":" + _data.time.minutes.toString();
+        timeCell.innerHTML = _data.time.hours + ":" + _data.time.minutes;
 
 
         _row.appendChild(interpretCell);
@@ -113,5 +115,7 @@ namespace testNamespace {
         _row.appendChild(dateCell);
         _row.appendChild(timeCell);
     }
+
+    function onDeleteButton(): void
 
 }
