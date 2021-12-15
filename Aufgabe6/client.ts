@@ -10,7 +10,7 @@ namespace Client {
     const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
     sendbutton.addEventListener("click", function (evt: Event) {
-        evt.preventDefault();
+        //evt.preventDefault();
         sendform();
     });
 
@@ -21,15 +21,13 @@ namespace Client {
     async function sendform(): Promise<void> {
         let formData: FormData = new FormData(datum);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
+
         let urlwithQuery: string = url + path + "?" + query.toString();
+        console.log(urlwithQuery);
 
         let response: Response = await fetch(urlwithQuery);
         let responsetext: string = await response.text();
         console.log(responsetext);
-
-
-
-
 
     }
 }

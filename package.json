@@ -1,0 +1,8 @@
+{
+    "dependencies": {
+        "@types/node": "^16.11.13"
+    },
+    "scripts": {
+        "start": "node Aufgabe6.1/Server.js"
+    }
+}
