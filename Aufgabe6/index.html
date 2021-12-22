@@ -6,19 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <sript src="Client.js" defer></sript>
+    <sript src="client.js" defer></sript>
 </head>
 
 <body>
     <h1>Client</h1>
     <form id="Datum">
-        <label>Tag:</label>
-        <input type="number" tag="date" />
-        <label>Monat:</label>
-        <input type="text" monat="month" />
-        <label>Jahr:</label>
-        <input type="number" jahr="year" />
-        <button id="send-button"> Send Formular </button>
+        <label>Datum:</label>
+        <input type="date" date="date" name="date" />
+        <button id="send-button"> Save </button>
         <div id="display"></div>
     </form>
 </body>

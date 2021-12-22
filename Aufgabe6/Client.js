@@ -1,5 +1,4 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 var Client;
 (function (Client) {
     console.log("Client läuft");
@@ -12,14 +11,15 @@ var Client;
         evt.preventDefault();
         sendform();
     });
-    console.log(datum, sendbutton);
     async function sendform() {
         let formData = new FormData(datum);
         let query = new URLSearchParams(formData);
         let urlwithQuery = url + path + "?" + query.toString();
-        console.log(urlwithQuery);
         let response = await fetch(urlwithQuery);
         let responsetext = await response.text();
+        let ausgabe = document.createElement("p");
+        ausgabe.textContent = responsetext;
+        display.appendChild(ausgabe);
         console.log(responsetext);
     }
 })(Client || (Client = {}));

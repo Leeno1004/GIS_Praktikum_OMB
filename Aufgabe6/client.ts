@@ -1,4 +1,4 @@
-import { urlToHttpOptions } from "url";
+
 
 namespace Client {
     console.log("Client läuft");
@@ -10,23 +10,24 @@ namespace Client {
     const display: HTMLElement = <HTMLElement>document.getElementById("display");
 
     sendbutton.addEventListener("click", function (evt: Event) {
-        //evt.preventDefault();
+        evt.preventDefault();
         sendform();
     });
-
-    console.log(datum, sendbutton);
-
 
 
     async function sendform(): Promise<void> {
         let formData: FormData = new FormData(datum);
         let query: URLSearchParams = new URLSearchParams(<any>formData);
-
         let urlwithQuery: string = url + path + "?" + query.toString();
-        console.log(urlwithQuery);
+
+
 
         let response: Response = await fetch(urlwithQuery);
         let responsetext: string = await response.text();
+
+        let ausgabe: HTMLElement = document.createElement("p");
+        ausgabe.textContent = responsetext;
+        display.appendChild(ausgabe);
         console.log(responsetext);
 
     }
