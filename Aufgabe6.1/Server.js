@@ -29,4 +29,4 @@ var Server;
         console.log(`Server at http://${hostname}:${port}`);
     });
 })(Server || (Server = {}));
-//# sourceMappingURL=Server.js.map
+//# sourceMappingURL=server.js.map

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>Eventpage</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <meta name="author" content="Ben Kriegler" />
+    <script src="client.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <main id="main">
+            <form id="KonzertEvent"></form>
+            <label for="interpretInput">Interpret</label>
+            <input type="text" name="interpret" id="interpretInput" placeholder="Interpret">
+            <label for="priceInput">Price</label>
+            <input type="number" name="price" id="priceInput" placeholder="Price">
+            <button id="enterButton" type="submit">Enter Event</button>
+            </form>
+            <div id="output">
+                <h4>Events </h4>
+                <tr>
+                    <th id="interpretSpalte">Interpret</th>
+                    <th id="priceSpalte">Price</th>
+                    <th id="deleteSpalte"></th>
+                </tr>
+            </div>
+        </main>
+        <footer>
+            <p>Seite erstellt am 02. Januar 2022.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
