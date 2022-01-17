@@ -1,77 +1,73 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.EventTabelle = void 0;
 const http = require("http");
 const mongo = require("mongodb");
-const hostname = "127.0.0.1";
-const port = 3000;
-const mongoUrl = "mongodb://localhost:27017";
-let mongoClient = new mongo.MongoClient(mongoUrl);
-async function dbFind(db, collection, requestObject, response) {
-    let result = await mongoClient
-        .db(db)
-        .collection(collection)
-        .find(requestObject)
-        .toArray();
-    response.setHeader("Content-Type", "application/json");
-    response.write(JSON.stringify(result));
-}
-async function dbAddOrEdit(db, collection, request) {
-    let jsonString = "";
-    request.on("data", data => {
-        jsonString += data;
-    });
-    request.on("end", async() => {
+const mongodb_1 = require("mongodb");
+var EventTabelle;
+(function (EventTabelle) {
+    const hostname = "127.0.0.1";
+    const port = 8100;
+    const mongoUrl = "mongodb://localhost:27017";
+    let mongoClient = new mongo.MongoClient(mongoUrl);
+    async function dbFind(db, collection, response) {
+        mongoClient.connect();
+        let result = await mongoClient
+            .db(db)
+            .collection(collection)
+            .find()
+            .toArray();
+        response.setHeader("Content-Type", "application/json");
+        console.log(JSON.stringify(result));
+        response.write(JSON.stringify(result));
+    }
+    async function dbAddOrEdit(request, response) {
+        let jsonString = "";
+        request.on("data", (event) => {
+            jsonString += event;
+        });
+        request.on("end", async () => {
+            let inputEvent = JSON.parse(jsonString);
+            let mongoKonzertEvent = {
+                _id: new mongodb_1.ObjectId(), interpret: inputEvent.interpret, price: inputEvent.price
+            };
+            console.log("incomingevent: ", jsonString);
+            await writeEventToDB(mongoKonzertEvent);
+        });
+    }
+    async function writeEventToDB(event) {
         await mongoClient.connect();
-        console.log(jsonString);
-        let event = JSON.parse(jsonString);
-        if (event._id && event._id !== undefined) {
-            event._id = new mongo.ObjectId(event._id);
-            mongoClient.db(db).collection(collection).replaceOne({
-                _id: event._id
-            }, event);
-        } else {
-            event._id = undefined;
-            mongoClient.db(db).collection(collection).insertOne(event);
-        }
-    });
-}
-async function main() {
-    await mongoClient.connect();
-    const db = mongoClient.db("db");
-    const eventCollection = db.collection("Events");
-    let newEvent = {
-        interpret: "MJ",
-        price: 20
-    };
-    await eventCollection.insertOne(newEvent);
-    let events = (await eventCollection.find({ interpret: "MJ" }).toArray());
-    console.log(events);
-    await mongoClient.close();
-}
-const server = http.createServer(async(request, response) => {
-    response.statusCode = 200;
-    let url = new URL(request.url || "", `http://${request.headers.host}`);
-    switch (url.pathname) {
-        case "/concertEvents":
-            {
+        await mongoClient.db("db").collection("Events").replaceOne({
+            _id: event._id
+        }, event);
+        await mongoClient.close();
+    }
+    const server = http.createServer();
+    server.addListener("request", handleRequest);
+    async function handleRequest(request, response) {
+        response.statusCode = 200;
+        response.setHeader("content-type", "text/html; charset=utf-8");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        let url = new URL(request.url || "", `http://${request.headers.host}`);
+        switch (url.pathname) {
+            case "/concertEvents": {
                 switch (request.method) {
                     case "GET":
-                        await dbFind("interpret", "price", {
-                            interpret: url.searchParams.get("interpret")
-                        }, response);
+                        await dbFind("db", "Events", response);
                         break;
                     case "POST":
-                        await dbAddOrEdit("db", "Events", request);
+                        await dbAddOrEdit(request, response);
                         break;
                 }
                 break;
             }
-        default:
-            response.statusCode = 404;
+            default:
+                response.statusCode = 404;
+        }
+        response.end();
     }
-    response.end();
-});
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
-});
+    server.listen(port, hostname, () => {
+        console.log(`Server running at http://${hostname}:${port}/`);
+    });
+})(EventTabelle = exports.EventTabelle || (exports.EventTabelle = {}));
 //# sourceMappingURL=server.js.map

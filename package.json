@@ -6,6 +6,6 @@
         "mongodb": "^4.2.2"
     },
     "scripts": {
-        "start": "node Aufgabe6.1/Server.js"
+        "start": "node Aufgabe8/server.js"
     }
 }
