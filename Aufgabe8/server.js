@@ -37,9 +37,7 @@ var EventTabelle;
     }
     async function writeEventToDB(event) {
         await mongoClient.connect();
-        await mongoClient.db("db").collection("Events").replaceOne({
-            _id: event._id
-        }, event);
+        await mongoClient.db("db").collection("Events").insertOne(event);
         await mongoClient.close();
     }
     const server = http.createServer();

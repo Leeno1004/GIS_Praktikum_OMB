@@ -68,9 +68,7 @@ export namespace EventTabelle {
     async function writeEventToDB(event: MongoKonzertEvent): Promise<void> {
         await mongoClient.connect();
 
-        await mongoClient.db("db").collection("Events").replaceOne({
-            _id: event._id
-        },
+        await mongoClient.db("db").collection("Events").insertOne(
             event
         );
 
